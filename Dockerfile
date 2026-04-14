@@ -1,7 +1,23 @@
-FROM node:18-alpine
+# Use Node image
+FROM node:20-alpine
+
+# Set working directory
 WORKDIR /app
-COPY package*.json ./
+
+# Copy package files
+COPY package.json yarn.lock ./
+
+# Install dependencies
 RUN yarn install
+
+# Copy rest of the code
 COPY . .
-EXPOSE 3000
-CMD ["yarn", "start"]
+
+# Build TypeScript
+RUN yarn build
+
+# Expose port
+EXPOSE 5000
+
+# Run app
+CMD ["node", "dist/server.js"]
