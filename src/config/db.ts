@@ -1,5 +1,4 @@
 // import "./bootstrap"; // 👈 MUST be first line
-import "../../src/bootstrap"
 
 import { Pool } from "pg";
 import dotenv from "dotenv";
