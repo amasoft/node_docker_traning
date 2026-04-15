@@ -19,3 +19,4 @@ app.get("/db", async (req, res) => {
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
+// ostgresql://postgres:Docker_Tutorial%40%40%40%23%2E%2F@db.zzpyxbwjaqoaitlebbfg.supabase.co:5432/postgres
