@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
+import dns from "dns";
 
+dns.setDefaultResultOrder("ipv4first");
 const app = express();
 
 app.use(cors());
@@ -11,3 +13,8 @@ app.get("/", (req, res) => {
 });
 
 export default app;
+
+
+
+
+
