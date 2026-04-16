@@ -24,9 +24,12 @@
 # CMD ["yarn", "start"]
 
 
-FROM node:22-alpine
+# FROM node:22-alpine
+FROM node:22-bullseye
 
 WORKDIR /app
+
+# Install Chromium + dependencies
 RUN apt-get update && apt-get install -y \
   chromium \
   ca-certificates \
@@ -35,14 +38,19 @@ RUN apt-get update && apt-get install -y \
   libxss1 \
   libasound2 \
   libgtk-3-0 \
-  libx11-xcb1
-  
+  libx11-xcb1 \
+  libgbm1 \
+  libxshmfence1 \
+  && rm -rf /var/lib/apt/lists/*
+
 COPY package.json yarn.lock ./
+
 RUN yarn install
 
 COPY . .
 
 RUN yarn build
 
-# CMD ["yarn", "start"]
+EXPOSE 5000
+
 CMD ["node", "dist/server.js"]

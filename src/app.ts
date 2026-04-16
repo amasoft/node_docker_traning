@@ -15,6 +15,6 @@ app.get("/", (req, res) => {
 export default app;
 
 
-
+// postgresql://postgres:password@aws-0-xxx.pooler.supabase.com:6543/postgres
 
 

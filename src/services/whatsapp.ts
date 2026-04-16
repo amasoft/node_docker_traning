@@ -12,11 +12,14 @@ export const client = new Client({
   }
 });
 
-client.on("qr", (qr) => {
-  console.log("Scan QR:");
+// client.on("qr", (qr) => {
+//   console.log("Scan QR:");
+//   qrcode.generate(qr, { small: true });
+// });
+client.on("qr", (qr: string) => {
+  console.log("Scan this QR code:");
   qrcode.generate(qr, { small: true });
 });
-
 client.on("ready", () => {
   console.log("✅ WhatsApp ready");
 });
