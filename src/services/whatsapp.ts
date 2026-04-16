@@ -27,7 +27,7 @@ export const client = new Client({
 
 client.on("qr", async (qr:string) => {
   latestQr = await QRCode.toDataURL(qr);
-  console.log("✅ QR generated. Visit /qr to view it.");
+  console.log("✅ QR generated. Visit /qr to view it.  "+latestQr);
 });
 client.on("ready", () => {
   console.log("✅ WhatsApp ready");
