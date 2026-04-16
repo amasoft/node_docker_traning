@@ -1,5 +1,6 @@
 import "./bootstrap"; // 👈 MUST be first line
 import "./services/whatsapp"
+import { latestQr } from "./services/whatsapp";
 
 import dotenv from "dotenv";
 dotenv.config();
@@ -22,6 +23,22 @@ app.post("/send", async (req, res) => {
   // await client.sendMessage(`${number}@c.us`, message);
 
   res.json({ success: true });
+});
+
+
+app.get("/qr", (req, res) => {
+  if (!latestQr) {
+    return res.send("sNo QR available or already authenticated.");
+  }
+
+  res.send(`
+    <html>
+      <body style="font-family:sans-serif;text-align:center;padding:40px;">
+        <h2>WhatsApp QR Code</h2>
+        <img src="${latestQr}" />
+      </body>
+    </html>
+  `);
 });
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
