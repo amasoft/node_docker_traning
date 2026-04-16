@@ -27,7 +27,16 @@
 FROM node:22-alpine
 
 WORKDIR /app
-
+RUN apt-get update && apt-get install -y \
+  chromium \
+  ca-certificates \
+  fonts-liberation \
+  libnss3 \
+  libxss1 \
+  libasound2 \
+  libgtk-3-0 \
+  libx11-xcb1
+  
 COPY package.json yarn.lock ./
 RUN yarn install
 

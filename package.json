@@ -12,6 +12,7 @@
     "run_docker": "docker compose up",
     "check_port_usage": "sudo lsof -i :5432"
   },
+  
   "dependencies": {
     "@prisma/client": "^7.7.0",
     "cors": "^2.8.6",
